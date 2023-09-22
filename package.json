@@ -1,0 +1,22 @@
+{
+  "name": "@nowilltobreak/hollow",
+  "version": "0.0.1",
+  "description": "dex contracts interface",
+  "author": "nowilltobreak",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "contracts"
+  ],
+  "keywords": [
+    "dodo",
+    "ethereum",
+    "contracts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NoWillToBreak/Hollow.git"
+  }
+}
