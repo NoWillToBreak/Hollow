@@ -1,6 +1,6 @@
 {
   "name": "@nowilltobreak/hollow",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "dex contracts interface",
   "author": "nowilltobreak",
   "license": "ISC",
@@ -18,5 +18,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/NoWillToBreak/Hollow.git"
+  },
+  "devDependencies": {
+    "hardhat": "^2.18.1"
   }
 }
