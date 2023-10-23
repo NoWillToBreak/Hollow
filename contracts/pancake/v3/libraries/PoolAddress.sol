@@ -53,4 +53,28 @@ library PoolAddress {
             )
         );
     }
+
+    function computeAddressWithInitCode(
+        address deployer,
+        PoolKey memory key,
+        bytes32 init_code
+    ) internal pure returns (address pool) {
+        require(key.token0 < key.token1);
+        pool = address(
+            uint160(
+                uint256(
+                    keccak256(
+                        abi.encodePacked(
+                            hex"ff",
+                            deployer,
+                            keccak256(
+                                abi.encode(key.token0, key.token1, key.fee)
+                            ),
+                            init_code
+                        )
+                    )
+                )
+            )
+        );
+    }
 }
