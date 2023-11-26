@@ -17,12 +17,14 @@ library CallbackValidation {
         address deployer,
         address tokenA,
         address tokenB,
-        uint24 fee
+        uint24 fee,
+        bytes32 init_code
     ) internal view returns (IPancakeV3Pool pool) {
         return
             verifyCallback(
                 deployer,
-                PoolAddress.getPoolKey(tokenA, tokenB, fee)
+                PoolAddress.getPoolKey(tokenA, tokenB, fee),
+                init_code
             );
     }
 
@@ -32,9 +34,10 @@ library CallbackValidation {
     /// @return pool The V3 pool contract address
     function verifyCallback(
         address deployer,
-        PoolAddress.PoolKey memory poolKey
+        PoolAddress.PoolKey memory poolKey,
+        bytes32 init_code
     ) internal view returns (IPancakeV3Pool pool) {
-        pool = IPancakeV3Pool(PoolAddress.computeAddress(deployer, poolKey));
+        pool = IPancakeV3Pool(PoolAddress.computeAddressWithInitCode(deployer, poolKey, init_code));
         require(msg.sender == address(pool));
     }
 }
